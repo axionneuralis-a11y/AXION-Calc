@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">AXION Calc</string>
+    <string name="calculator">Kalkulator</string>
+    <string name="settings">Pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="language_follow_phone">Ikuti ponsel</string>
+    <string name="language_english">Inggris</string>
+    <string name="language_indonesian">Indonesia</string>
+    <string name="theme">Tampilan</string>
+    <string name="theme_follow_system">Ikuti sistem</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="default_calculator">Kalkulator default</string>
+    <string name="default_calculator_description">Jadikan AXION Calc sebagai aplikasi kalkulator default sistem.</string>
+    <string name="set_default">Jadikan default</string>
+    <string name="is_default">AXION Calc adalah kalkulator default.</string>
+    <string name="not_supported">Versi Android ini tidak mendukung peran kalkulator default.</string>
+    <string name="back">Kembali</string>
+    <string name="backspace">Backspace</string>
+    <string name="clear">Hapus</string>
+
+    <!-- Privacy & Feedback -->
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="privacy_policy_title">Kebijakan Privasi</string>
+    <string name="feedback">Kirim Masukan</string>
+    <string name="feedback_subject">Masukan AXION Calc</string>
+    <string name="feedback_chooser">Kirim masukan melalui…</string>
+
+    <!-- Banners -->
+    <string name="banner_github">Menikmati AXION Calc? Beri kami bintang di Github</string>
+    <string name="banner_romance">Cobalah Produk AXION Yang LAIN. ROMANCE ENGINE. Nyatakan cintamu dengan romance engine by AXION Neuralis.</string>
+    <string name="banner_follow">Yuk Ikuti Terus Perkembangan AXION Neuralis. Agar Anda Tidak Tertinggal Dengan Produk Produk AXION.</string>
+
+    <!-- Privacy content -->
+    <string name="privacy_intro">AXION Calc menghormati privasi Anda. Kebijakan ini menjelaskan bagaimana aplikasi menangani informasi.</string>
+    <string name="privacy_section_data">Pengumpulan Data</string>
+    <string name="privacy_data_body">AXION Calc tidak mengumpulkan, menyimpan, atau mengirim data pribadi apa pun ke server eksternal. Semua perhitungan dan preferensi tetap di perangkat Anda.</string>
+    <string name="privacy_section_storage">Penyimpanan Lokal</string>
+    <string name="privacy_storage_body">Aplikasi hanya menyimpan preferensi bahasa dan tema secara lokal menggunakan Android DataStore. Data ini tidak pernah meninggalkan perangkat Anda.</string>
+    <string name="privacy_section_network">Akses Jaringan</string>
+    <string name="privacy_network_body">Aplikasi tidak membutuhkan atau menggunakan akses internet untuk fungsi utamanya. Membuka tautan eksternal (GitHub, halaman produk, atau email) hanya terjadi saat Anda secara eksplisit mengetuk banner atau tombol masukan.</string>
+    <string name="privacy_section_permissions">Izin</string>
+    <string name="privacy_permissions_body">AXION Calc tidak meminta izin sensitif apa pun. Peran kalkulator default opsional menggunakan API RoleManager sistem dan tidak memberikan akses data lain kepada aplikasi.</string>
+    <string name="privacy_section_third_party">Layanan Pihak Ketiga</string>
+    <string name="privacy_third_party_body">Tidak ada analitik, iklan, pelaporan kerusakan, atau SDK pihak ketiga yang mengirim data yang disertakan.</string>
+    <string name="privacy_section_children">Anak-anak</string>
+    <string name="privacy_children_body">Aplikasi cocok untuk semua usia dan tidak secara sengaja mengumpulkan informasi apa pun dari anak-anak.</string>
+    <string name="privacy_section_changes">Perubahan</string>
+    <string name="privacy_changes_body">Jika kebijakan ini diperbarui, versi baru akan disertakan dalam rilis aplikasi di masa mendatang. Penggunaan aplikasi yang berkelanjutan setelah pembaruan merupakan penerimaan terhadap kebijakan yang direvisi.</string>
+    <string name="privacy_section_contact">Kontak</string>
+    <string name="privacy_contact_body">Pertanyaan tentang privasi dapat dikirim melalui opsi masukan di dalam aplikasi atau ke axionneuralis@gmail.com / azrielpace852@gmail.com.</string>
+    <string name="privacy_last_updated">Terakhir diperbarui: September 2026</string>
+</resources>
