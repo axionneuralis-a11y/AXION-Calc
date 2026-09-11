@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.AxionCalc" parent="android:style/Theme.Material.DayNight.NoActionBar" />
+    <!-- Material3 DayNight theme (requires com.google.android.material:material) -->
+    <style name="Theme.AxionCalc" parent="Theme.Material3.DayNight.NoActionBar" />
 </resources>

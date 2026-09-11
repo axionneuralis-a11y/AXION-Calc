@@ -6,8 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 
+/**
+ * Helper for requesting the system calculator role (API 35+).
+ * ROLE_SYSTEM_CALCULATOR was introduced in Android 15 (API 35).
+ */
 object DefaultCalculatorHelper {
-    fun isSupported(): Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+
+    /** Role is only available starting from Android 15 (API 35). */
+    fun isSupported(): Boolean = Build.VERSION.SDK_INT >= 35 // Build.VERSION_CODES.VANILLA_ICE_CREAM
 
     fun isDefault(context: Context): Boolean {
         if (!isSupported()) return false
@@ -25,6 +31,7 @@ object DefaultCalculatorHelper {
 
     fun requestRole(activity: Activity): Boolean {
         val intent = requestRoleIntent(activity) ?: return false
+        @Suppress("DEPRECATION")
         activity.startActivityForResult(intent, REQUEST_CODE)
         return true
     }

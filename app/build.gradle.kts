@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.axion.calc"
-    compileSdk = 37
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.axion.calc"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -50,6 +50,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.datastore.preferences)
+
+    // Required for Theme.Material3.* XML themes
+    implementation(libs.material)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)

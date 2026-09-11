@@ -31,21 +31,34 @@ class CalculatorViewModel : ViewModel() {
     }
 
     fun backspace() {
-        if (_expression.value.isNotEmpty()) _expression.value = _expression.value.dropLast(1)
+        if (_expression.value.isNotEmpty()) {
+            _expression.value = _expression.value.dropLast(1)
+        }
         _result.value = preview()
         justEvaluated = false
     }
 
     fun equals() {
         if (_expression.value.isBlank()) return
-        _result.value = CalculatorEngine.evaluate(_expression.value.replace('×','*').replace('÷','/'))
+        _result.value = CalculatorEngine.evaluate(
+            _expression.value.replace('×', '*').replace('÷', '/')
+        )
         justEvaluated = true
     }
 
     private fun preview(): String {
-        val expr = _expression.value.replace('×','*').replace('÷','/')
+        val expr = _expression.value.replace('×', '*').replace('÷', '/')
         if (expr.isBlank()) return "0"
-        if (expr.any { it in "+*/(" || it == ')' } && expr.lastOrNull() in charArrayOf('+','-','*','/','%','(')) return _result.value
+
+        // lastOrNull() returns Char? – must handle null before using `in` on CharArray
+        val lastChar = expr.lastOrNull() ?: return "0"
+        val trailingOperator = lastChar in charArrayOf('+', '-', '*', '/', '%', '(')
+
+        val hasOperatorOrParen = expr.any { it in "+*/(" || it == ')' }
+        if (hasOperatorOrParen && trailingOperator) {
+            return _result.value
+        }
+
         val value = CalculatorEngine.evaluate(expr)
         return if (value == "Error") _result.value else value
     }
