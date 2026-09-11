@@ -7,26 +7,32 @@ import android.content.Intent
 import android.os.Build
 
 /**
- * Helper for requesting the system calculator role (API 35+).
- * ROLE_SYSTEM_CALCULATOR was introduced in Android 15 (API 35).
+ * Helper for requesting the system calculator role.
+ *
+ * ROLE_SYSTEM_CALCULATOR is not exposed as a public constant in the SDK
+ * android.jar (even on API 35+). Use the official role name string instead.
+ * Availability is still gated by isRoleAvailable() at runtime.
  */
 object DefaultCalculatorHelper {
 
-    /** Role is only available starting from Android 15 (API 35). */
-    fun isSupported(): Boolean = Build.VERSION.SDK_INT >= 35 // Build.VERSION_CODES.VANILLA_ICE_CREAM
+    /** Official role name used by the system for the default calculator app. */
+    private const val ROLE_SYSTEM_CALCULATOR = "android.app.role.SYSTEM_CALCULATOR"
+
+    /** Role request is only meaningful on API 29+ (RoleManager introduction). */
+    fun isSupported(): Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
     fun isDefault(context: Context): Boolean {
         if (!isSupported()) return false
         val roleManager = context.getSystemService(RoleManager::class.java) ?: return false
-        return roleManager.isRoleAvailable(RoleManager.ROLE_SYSTEM_CALCULATOR) &&
-            roleManager.isRoleHeld(RoleManager.ROLE_SYSTEM_CALCULATOR)
+        return roleManager.isRoleAvailable(ROLE_SYSTEM_CALCULATOR) &&
+            roleManager.isRoleHeld(ROLE_SYSTEM_CALCULATOR)
     }
 
     fun requestRoleIntent(context: Context): Intent? {
         if (!isSupported()) return null
         val roleManager = context.getSystemService(RoleManager::class.java) ?: return null
-        if (!roleManager.isRoleAvailable(RoleManager.ROLE_SYSTEM_CALCULATOR)) return null
-        return roleManager.createRequestRoleIntent(RoleManager.ROLE_SYSTEM_CALCULATOR)
+        if (!roleManager.isRoleAvailable(ROLE_SYSTEM_CALCULATOR)) return null
+        return roleManager.createRequestRoleIntent(ROLE_SYSTEM_CALCULATOR)
     }
 
     fun requestRole(activity: Activity): Boolean {
