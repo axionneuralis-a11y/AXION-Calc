@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    // AGP 9 has built-in Kotlin – do NOT apply org.jetbrains.kotlin.android
+    // Compose compiler plugin only (AGP 9 provides built-in Kotlin)
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -48,13 +48,6 @@ android {
     }
 }
 
-// Configure Kotlin via AGP built-in support
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -62,8 +55,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.datastore.preferences)
-
-    // Required for Theme.Material3.* XML themes
     implementation(libs.material)
 
     implementation(platform(libs.compose.bom))

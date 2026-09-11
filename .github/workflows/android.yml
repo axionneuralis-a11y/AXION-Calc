@@ -23,10 +23,12 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Accept SDK licenses & install platform 35
+      - name: Accept licenses and install platform 35
         run: |
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0" >/dev/null 2>&1 || true
+          set +e
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          set -e
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -42,7 +44,16 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew testDebugUnitTest --stacktrace
+        run: ./gradlew testDebugUnitTest --stacktrace --info | tee gradle-test.log
+        continue-on-error: false
+
+      - name: Upload gradle log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-test-log
+          path: gradle-test.log
+          retention-days: 3
 
   build:
     runs-on: ubuntu-latest
@@ -60,10 +71,12 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Accept SDK licenses & install platform 35
+      - name: Accept licenses and install platform 35
         run: |
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0" >/dev/null 2>&1 || true
+          set +e
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          set -e
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
